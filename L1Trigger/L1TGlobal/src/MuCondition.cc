@@ -386,8 +386,8 @@ const bool l1t::MuCondition::checkObjectParameter(const int iCondition,
   {
     if (!checkThreshold(objPar.unconstrainedPtLow, objPar.unconstrainedPtHigh, cand.hwPtUnconstrained(), m_gtMuonTemplate->condGEq())) 
     {
-	LogDebug("L1TGlobal") << "\t\t Muon Failed unconstrainedPt checkThreshold " << std::endl;
-	return false;
+	    LogDebug("L1TGlobal") << "\t\t Muon Failed unconstrainedPt checkThreshold " << std::endl;
+	    return false;
     }
       // check impact parameter ( bit check ) with impact parameter LUT
     // sanity check on candidate impact parameter
@@ -398,8 +398,8 @@ const bool l1t::MuCondition::checkObjectParameter(const int iCondition,
     bool passImpactParameterLUT = ((objPar.impactParameterLUT >> cand.hwDXY()) & 1);
     if (!passImpactParameterLUT) // POTENITAL PROBLEM RICK
       {
-	LogDebug("L1TGlobal") << "\t\t l1t::Candidate failed impact parameter requirement" << std::endl;
-	return false;
+	      LogDebug("L1TGlobal") << "\t\t l1t::Candidate failed impact parameter requirement" << std::endl;
+	      return false;
       }
   }
 
