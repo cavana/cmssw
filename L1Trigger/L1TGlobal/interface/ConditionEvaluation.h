@@ -217,7 +217,7 @@ namespace l1t {
       {
 	if( condGEqValue ) 
 	  {
-	    if( value >= (Type2)thresholdL && (Type1)value < thresholdH ) 
+	    if( value >= (Type2)thresholdL && (Type1)value <= thresholdH ) 
 	      {
 		return true;
 	      }
