@@ -398,9 +398,11 @@ const bool l1t::CorrCondition::evaluateCondition(const int bxEval) const {
         eta0Phy = 0.5 * (binEdges.second + binEdges.first);
         binEdges = m_gtScales->getMUScales().etBins.at(etBin0);
         et0Phy = 0.5 * (binEdges.second + binEdges.first);
-        binEdges = m_gtScales->getMUScales().uptBins.at(uptBin0);  // Added for displaced muons
-        upt0Phy = 0.5 * (binEdges.second + binEdges.first);        // Added for displaced muons
-
+        if( corrPar.corrCutType & 0x40 ) // Added for displaced muons
+          {
+	    binEdges = m_gtScales->getMUScales().uptBins.at(uptBin0);
+	    upt0Phy = 0.5 * (binEdges.second + binEdges.first);      
+	  }
         LogDebug("L1TGlobal") << "Found all quantities for the muon 0" << std::endl;
       } break;
 
@@ -678,9 +680,12 @@ const bool l1t::CorrCondition::evaluateCondition(const int bxEval) const {
           eta1Phy = 0.5 * (binEdges.second + binEdges.first);
           binEdges = m_gtScales->getMUScales().etBins.at(etBin1);
           et1Phy = 0.5 * (binEdges.second + binEdges.first);
-	  // Added for displaced muons
-          binEdges = m_gtScales->getMUScales().uptBins.at(uptBin1); 
-          upt1Phy = 0.5 * (binEdges.second + binEdges.first); 
+	  if( corrPar.corrCutType & 0x40 ) // Added for displaced muons
+	    {
+	      binEdges = m_gtScales->getMUScales().uptBins.at(uptBin1); 
+	      upt1Phy = 0.5 * (binEdges.second + binEdges.first); 
+	    }
+	  LogDebug("L1TGlobal") << "Found all quantities for the muon 1" << std::endl;
         } break;
         case CondCalo: {
           switch (cndObjTypeVec[1]) {
